@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Max Ventures – Premium Quality Products</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --black: #0A0A0A;
+    --off-black: #111111;
+    --dark: #1A1A1A;
+    --surface: #1E1C18;
+    --cream: #F5EDD6;
+    --cream-light: #FDF8EE;
+    --text: #E8E0CC;
+    --muted: #9A9080;
+    --green: #2D6A4F;
+    --green-light: #52B788;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 5%;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+  .nav-logo span { color: var(--cream); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--black); padding: 10px 24px;
+    border-radius: 50px; font-weight: 600; font-size: 0.88rem;
+    text-decoration: none; letter-spacing: 0.05em;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 0 20px rgba(201,168,76,0.3);
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(201,168,76,0.5); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 26px; height: 2px; background: var(--gold); border-radius: 2px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(201,168,76,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 40% at 20% 20%, rgba(45,106,79,0.12) 0%, transparent 55%),
+                var(--black);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.35);
+    color: var(--gold-light);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+    padding: 7px 20px; border-radius: 50px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--cream-light);
+    max-width: 800px; margin: 0 auto 20px;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted); max-width: 560px; margin: 0 auto 40px;
+    line-height: 1.7; font-weight: 300;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+    color: var(--black); padding: 16px 40px;
+    border-radius: 50px; font-weight: 700; font-size: 1rem;
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 30px rgba(201,168,76,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(201,168,76,0.55); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--cream); padding: 16px 40px;
+    border-radius: 50px; font-weight: 600; font-size: 1rem;
+    text-decoration: none; letter-spacing: 0.04em;
+    border: 1.5px solid rgba(201,168,76,0.4);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .hero-scroll {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll span {
+    display: block; width: 22px; height: 38px;
+    border: 2px solid rgba(201,168,76,0.4); border-radius: 20px;
+    position: relative; margin: 0 auto;
+  }
+  .hero-scroll span::after {
+    content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 8px; background: var(--gold);
+    border-radius: 2px; animation: scrollDot 2s infinite;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--surface);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 18px 5%;
+    display: flex; gap: 0; justify-content: center; flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0 32px;
+    border-right: 1px solid rgba(201,168,76,0.15);
+    color: var(--muted); font-size: 0.88rem; font-weight: 500;
+  }
+  .trust-item:last-child { border-right: none; }
+  .trust-item .icon { font-size: 1.1rem; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 90px 5%; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 900; color: var(--cream-light);
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-sub {
+    color: var(--muted); font-size: 1.05rem; max-width: 520px;
+    line-height: 1.7; font-weight: 300;
+  }
+  .section-head { margin-bottom: 52px; }
+
+  /* ── PRODUCTS ── */
+  .products { background: var(--off-black); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .product-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 20px; overflow: hidden;
+    transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    border-color: rgba(201,168,76,0.4);
+  }
+  .product-img {
+    width: 100%; height: 200px; object-fit: cover;
+    display: block; transition: transform 0.4s;
+  }
+  .product-card:hover .product-img { transform: scale(1.05); }
+  .product-img-wrap { overflow: hidden; position: relative; }
+  .product-tag {
+    position: absolute; top: 14px; right: 14px;
+    background: rgba(10,10,10,0.8); backdrop-filter: blur(6px);
+    color: var(--gold); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; padding: 5px 12px; border-radius: 50px;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .product-body { padding: 22px 22px 26px; }
+  .product-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--cream-light);
+    margin-bottom: 8px;
+  }
+  .product-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+  .product-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 16px; color: var(--gold); font-size: 0.88rem; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: gap 0.2s;
+  }
+  .product-link:hover { gap: 10px; }
+
+  /* ── MEMBERSHIP ── */
+  .membership { background: var(--black); }
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; align-items: start;
+  }
+  .plan-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 24px; padding: 36px 30px;
+    position: relative; transition: transform 0.35s, box-shadow 0.35s;
+  }
+  .plan-card:hover { transform: translateY(-6px); }
+  .plan-card.featured {
+    background: linear-gradient(145deg, #1C1810, #241E0E);
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 0 60px rgba(201,168,76,0.2), 0 20px 50px rgba(0,0,0,0.4);
+    transform: scale(1.04);
+  }
+  .plan-card.featured:hover { transform: scale(1.04) translateY(-6px); }
+  .popular-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+    color: var(--black); font-size: 0.72rem; font-weight: 800;
+    letter-spacing: 0.12em; padding: 6px 20px; border-radius: 50px;
+    white-space: nowrap; text-transform: uppercase;
+  }
+  .plan-tier {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .plan-tier.gold { color: #C9A84C; }
+  .plan-tier.diamond { color: #7EC8E3; }
+  .plan-tier.platinum { color: #B0B8C8; }
+  .plan-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900; color: var(--cream-light);
+    margin-bottom: 20px;
+  }
+  .plan-price {
+    font-size: 2.6rem; font-weight: 700; color: var(--gold-light);
+    line-height: 1; margin-bottom: 6px;
+  }
+  .plan-price sup { font-size: 1.1rem; vertical-align: super; }
+  .plan-price-note { color: var(--muted); font-size: 0.82rem; margin-bottom: 28px; }
+  .plan-divider {
+    height: 1px; background: rgba(201,168,76,0.12);
+    margin-bottom: 24px;
+  }
+  .plan-benefits { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .plan-benefits li {
+    display: flex; align-items: flex-start; gap: 10px;
+    color: var(--text); font-size: 0.9rem; line-height: 1.5;
+  }
+  .plan-benefits li .check {
+    color: var(--green-light); font-size: 1rem; margin-top: 1px; flex-shrink: 0;
+  }
+  .plan-btn {
+    display: block; width: 100%;
+    margin-top: 28px; padding: 14px;
+    border-radius: 50px; font-weight: 700; font-size: 0.95rem;
+    text-align: center; text-decoration: none; letter-spacing: 0.05em;
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+  .plan-btn.gold-btn {
+    background: rgba(201,168,76,0.1); color: var(--gold);
+    border: 1.5px solid rgba(201,168,76,0.35);
+  }
+  .plan-btn.gold-btn:hover { background: rgba(201,168,76,0.2); }
+  .plan-btn.diamond-btn {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+    color: var(--black); box-shadow: 0 4px 25px rgba(201,168,76,0.4);
+  }
+  .plan-btn.diamond-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(201,168,76,0.55); }
+  .plan-btn.platinum-btn {
+    background: rgba(176,184,200,0.1); color: #B0B8C8;
+    border: 1.5px solid rgba(176,184,200,0.3);
+  }
+  .plan-btn.platinum-btn:hover { background: rgba(176,184,200,0.18); }
+
+  /* ── URGENCY ── */
+  .urgency {
+    background: linear-gradient(135deg, #1A1200, #0A0A0A 40%, #001A0A);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    text-align: center; padding: 70px 5%;
+  }
+  .urgency-label {
+    display: inline-block;
+    background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.16em; padding: 6px 18px; border-radius: 50px;
+    margin-bottom: 22px; text-transform: uppercase;
+  }
+  .urgency h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 4vw, 2.8rem); font-weight: 900;
+    color: var(--cream-light); max-width: 700px; margin: 0 auto 30px;
+    line-height: 1.2;
+  }
+  .urgency h2 em {
+    font-style: italic; color: var(--gold);
+  }
+  .countdown {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .count-block {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 14px; padding: 18px 24px; min-width: 80px;
+  }
+  .count-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 900; color: var(--gold-light);
+    line-height: 1; display: block;
+  }
+  .count-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.12em; margin-top: 4px; display: block; }
+
+  /* ── PAYMENT ── */
+  .payment { background: var(--off-black); }
+  .payment-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center; max-width: 900px; margin: 0 auto;
+  }
+  .payment-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900; color: var(--cream-light);
+    margin-bottom: 14px;
+  }
+  .payment-info p { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 24px; }
+  .upi-box {
+    background: var(--surface); border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 14px; padding: 18px 22px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .upi-icon { font-size: 1.8rem; }
+  .upi-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 3px; }
+  .upi-id { font-size: 1.05rem; font-weight: 700; color: var(--gold-light); letter-spacing: 0.04em; }
+  .qr-box {
+    background: #fff; border-radius: 20px; padding: 16px;
+    box-shadow: 0 20px 60px rgba(201,168,76,0.25);
+    text-align: center;
+  }
+  .qr-box img { width: 100%; max-width: 260px; height: auto; border-radius: 8px; display: block; margin: 0 auto; }
+  .qr-label { color: #333; font-size: 0.82rem; margin-top: 10px; font-weight: 600; }
+
+  /* ── TRUST SECTION ── */
+  .trust-section { background: var(--black); text-align: center; }
+  .trust-badges {
+    display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+    margin-top: 48px;
+  }
+  .badge {
+    background: var(--surface); border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 16px; padding: 28px 28px;
+    flex: 1; min-width: 180px; max-width: 220px;
+    text-align: center; transition: transform 0.3s, border-color 0.3s;
+  }
+  .badge:hover { transform: translateY(-6px); border-color: rgba(201,168,76,0.4); }
+  .badge-icon { font-size: 2.2rem; margin-bottom: 12px; }
+  .badge-title { font-weight: 700; color: var(--cream-light); margin-bottom: 6px; }
+  .badge-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 60px 5% 30px;
+  }
+  .footer-inner {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand .nav-logo { font-size: 1.6rem; display: block; margin-bottom: 14px; }
+  .footer-brand p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h4 {
+    font-weight: 700; color: var(--cream-light); font-size: 0.9rem;
+    letter-spacing: 0.06em; margin-bottom: 18px; text-transform: uppercase;
+  }
+  .footer-col address {
+    font-style: normal; color: var(--muted); font-size: 0.88rem; line-height: 1.8;
+  }
+  .footer-col .gst {
+    margin-top: 12px; font-size: 0.8rem; color: var(--muted);
+  }
+  .footer-col .gst strong { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { color: var(--muted); font-size: 0.82rem; }
+  .footer-bottom span { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+  @keyframes scrollDot {
+    0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(14px); }
+  }
+  .fade-in { animation: fadeUp 0.7s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .payment-inner { grid-template-columns: 1fr; text-align: center; }
+    .upi-box { justify-content: center; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .trust-item { border-right: none; padding: 8px 20px; }
+    .plan-card.featured { transform: none; }
+    .plan-card.featured:hover { transform: translateY(-6px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Max<span>Ventures</span></div>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#payment">Pay</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#membership" class="nav-cta">Join Now</a>
+  <div class="hamburger" onclick="this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div>
+    <div class="hero-badge">🌿 Pure · Authentic · Trusted</div>
+    <h1>Premium Quality Products at <em>Unbeatable Prices</em></h1>
+    <p>Join Max Ventures Membership & Unlock Massive Discounts on Honey, Butter, Handloom &amp; Jaggery — straight from source to your doorstep.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">🛒 Shop Now</a>
+      <a href="#membership" class="btn-secondary">✦ Get Membership</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span></span>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="icon">✅</span> Trusted Seller</div>
+  <div class="trust-item"><span class="icon">🏆</span> Quality Assured</div>
+  <div class="trust-item"><span class="icon">🚚</span> Fast Delivery</div>
+  <div class="trust-item"><span class="icon">🔒</span> Secure Payments</div>
+  <div class="trust-item"><span class="icon">♻️</span> Eco-Friendly</div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-head">
+    <div class="section-label">Our Products</div>
+    <h2 class="section-title">Nature's Finest, Delivered</h2>
+    <p class="section-sub">Hand-picked, ethically sourced, and delivered fresh. Every product carries the promise of quality.</p>
+  </div>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="Honey" class="product-img">
+        <div class="product-tag">BESTSELLER</div>
+      </div>
+      <div class="product-body">
+        <div class="product-icon">🍯</div>
+        <div class="product-name">Pure Honey</div>
+        <div class="product-desc">Raw, unfiltered honey sourced from pristine forest hives. Packed with antioxidants, enzymes, and natural sweetness.</div>
+        <a href="#payment" class="product-link">Order Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&q=80" alt="Butter" class="product-img">
+        <div class="product-tag">FRESH</div>
+      </div>
+      <div class="product-body">
+        <div class="product-icon">🧈</div>
+        <div class="product-name">Premium Butter</div>
+        <div class="product-desc">Creamy, farm-fresh butter made from high-quality milk. Rich in flavour with no artificial additives.</div>
+        <a href="#payment" class="product-link">Order Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80" alt="Handloom" class="product-img">
+        <div class="product-tag">ARTISAN</div>
+      </div>
+      <div class="product-body">
+        <div class="product-icon">🧵</div>
+        <div class="product-name">Handloom Products</div>
+        <div class="product-desc">Authentic handcrafted textiles woven by skilled artisans. Timeless patterns that celebrate Indian heritage.</div>
+        <a href="#payment" class="product-link">Order Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1610725664285-7c57e6eeac3f?w=600&q=80" alt="Jaggery" class="product-img">
+        <div class="product-tag">ORGANIC</div>
+      </div>
+      <div class="product-body">
+        <div class="product-icon">🟫</div>
+        <div class="product-name">Organic Jaggery</div>
+        <div class="product-desc">Traditional unrefined cane jaggery, mineral-rich and naturally sweet. A healthy alternative to refined sugar.</div>
+        <a href="#payment" class="product-link">Order Now →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="membership" id="membership">
+  <div class="section-head" style="text-align:center; max-width:600px; margin:0 auto 52px;">
+    <div class="section-label">Membership Plans</div>
+    <h2 class="section-title">Unlock Exclusive Savings</h2>
+    <p class="section-sub" style="margin:0 auto;">Become a Max Ventures member and enjoy massive discounts, coupons, and priority access on every purchase.</p>
+  </div>
+  <div class="plans-grid">
+
+    <!-- GOLD -->
+    <div class="plan-card">
+      <div class="plan-tier gold">Gold</div>
+      <div class="plan-name">Gold Membership</div>
+      <div class="plan-price"><sup>₹</sup>5,000</div>
+      <div class="plan-price-note">One-time membership fee</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-benefits">
+        <li><span class="check">✔</span> Discounts on every purchase</li>
+        <li><span class="check">✔</span> Exclusive coupon codes</li>
+        <li><span class="check">✔</span> Early access to deals</li>
+        <li><span class="check">✔</span> Dedicated support</li>
+      </ul>
+      <a href="#payment" class="plan-btn gold-btn">Get Gold →</a>
+    </div>
+
+    <!-- DIAMOND (FEATURED) -->
+    <div class="plan-card featured">
+      <div class="popular-badge">⭐ Most Popular</div>
+      <div class="plan-tier diamond">Diamond</div>
+      <div class="plan-name">Diamond Membership</div>
+      <div class="plan-price"><sup>₹</sup>25,000</div>
+      <div class="plan-price-note">One-time membership fee</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-benefits">
+        <li><span class="check">✔</span> Maximum discounts on all products</li>
+        <li><span class="check">✔</span> VIP exclusive coupon codes</li>
+        <li><span class="check">✔</span> Priority early access to deals</li>
+        <li><span class="check">✔</span> Personal account manager</li>
+        <li><span class="check">✔</span> Free delivery on all orders</li>
+        <li><span class="check">✔</span> Surprise member-only gifts</li>
+      </ul>
+      <a href="#payment" class="plan-btn diamond-btn">Get Diamond ✦</a>
+    </div>
+
+    <!-- PLATINUM -->
+    <div class="plan-card">
+      <div class="plan-tier platinum">Platinum</div>
+      <div class="plan-name">Platinum Membership</div>
+      <div class="plan-price"><sup>₹</sup>50,000</div>
+      <div class="plan-price-note">One-time membership fee</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-benefits">
+        <li><span class="check">✔</span> Highest tier discounts — always</li>
+        <li><span class="check">✔</span> Unlimited premium coupons</li>
+        <li><span class="check">✔</span> First-access to every new product</li>
+        <li><span class="check">✔</span> Dedicated concierge support</li>
+        <li><span class="check">✔</span> Free express delivery, always</li>
+        <li><span class="check">✔</span> Exclusive event invitations</li>
+        <li><span class="check">✔</span> Annual luxury gift hamper</li>
+      </ul>
+      <a href="#payment" class="plan-btn platinum-btn">Get Platinum →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- URGENCY -->
+<section class="urgency" id="offer">
+  <div class="urgency-label">⏳ Limited Time Offer</div>
+  <h2>Get Membership at a <em>Discounted Price</em> — Offer Ends Soon!</h2>
+  <div class="countdown">
+    <div class="count-block"><span class="count-num" id="cd-days">00</span><span class="count-label">DAYS</span></div>
+    <div class="count-block"><span class="count-num" id="cd-hrs">00</span><span class="count-label">HOURS</span></div>
+    <div class="count-block"><span class="count-num" id="cd-min">00</span><span class="count-label">MINUTES</span></div>
+    <div class="count-block"><span class="count-num" id="cd-sec">00</span><span class="count-label">SECONDS</span></div>
+  </div>
+  <a href="#membership" class="btn-primary" style="font-size:1.05rem; padding:18px 48px;">Claim Discount Now →</a>
+</section>
+
+<!-- PAYMENT -->
+<section class="payment" id="payment">
+  <div class="section-head" style="text-align:center; max-width:600px; margin:0 auto 52px;">
+    <div class="section-label">Secure Payment</div>
+    <h2 class="section-title">Scan & Pay Securely</h2>
+    <p class="section-sub" style="margin: 0 auto;">Pay via BHIM UPI in seconds. Trusted, instant, and completely safe.</p>
+  </div>
+  <div class="payment-inner">
+    <div class="payment-info">
+      <h3>Pay via UPI</h3>
+      <p>Use any UPI-enabled app — Google Pay, PhonePe, Paytm, BHIM — to scan the QR code or pay directly to our UPI ID.</p>
+      <div class="upi-box">
+        <div class="upi-icon">💳</div>
+        <div>
+          <div class="upi-label">UPI ID</div>
+          <div class="upi-id">maxventures@ucobank</div>
+        </div>
+      </div>
+      <p style="margin-top:18px; font-size:0.85rem; color:var(--muted);">After payment, share your transaction screenshot via WhatsApp or email for order confirmation.</p>
+    </div>
+    <div class="qr-box">
+      <img src="/mnt/user-data/uploads/1000006518.jpg" alt="Max Ventures UPI QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=upi://pay?pa=maxventures@ucobank&pn=MaxVentures'; this.alt='UPI QR Code';">
+      <div class="qr-label">Scan to Pay · maxventures@ucobank</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="section-label">Why Choose Us</div>
+  <h2 class="section-title">Built on Trust, Delivered with Care</h2>
+  <div class="trust-badges">
+    <div class="badge">
+      <div class="badge-icon">🏅</div>
+      <div class="badge-title">Trusted Seller</div>
+      <div class="badge-desc">Verified business with hundreds of happy customers across India.</div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🔬</div>
+      <div class="badge-title">Quality Assured</div>
+      <div class="badge-desc">Every product is checked for purity, freshness, and authenticity.</div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🚚</div>
+      <div class="badge-title">Fast Delivery</div>
+      <div class="badge-desc">Swift dispatch with careful packaging to keep products fresh.</div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🌿</div>
+      <div class="badge-title">Natural & Pure</div>
+      <div class="badge-desc">No artificial preservatives. No compromises. Just pure goodness.</div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🔒</div>
+      <div class="badge-title">Secure Payments</div>
+      <div class="badge-desc">All transactions via BHIM UPI — encrypted, instant, safe.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="nav-logo">Max<span>Ventures</span></span>
+      <p>Your trusted partner for premium quality natural products. From forest hives to artisan looms — we bring the best of India to your home.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <address>
+        <a href="#products" style="color:var(--muted); text-decoration:none; display:block; margin-bottom:8px;">Products</a>
+        <a href="#membership" style="color:var(--muted); text-decoration:none; display:block; margin-bottom:8px;">Membership</a>
+        <a href="#payment" style="color:var(--muted); text-decoration:none; display:block; margin-bottom:8px;">Pay Now</a>
+        <a href="#offer" style="color:var(--muted); text-decoration:none; display:block;">Special Offers</a>
+      </address>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <address>
+        2nd Floor, Phase-3,<br>
+        S101 Door No.769, Suite 324,<br>
+        Spencer Plaza, Mount Road,<br>
+        Anna Salai, Chennai,<br>
+        Tamil Nadu – 600002
+        <div class="gst">GST: <strong>33BAIPA9287L1ZB</strong></div>
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>Max Ventures</span>. All rights reserved.</p>
+    <p>UPI: <span>maxventures@ucobank</span> · GST: 33BAIPA9287L1ZB</p>
+  </div>
+</footer>
+
+<script>
+  // Countdown — 3 days from now
+  const target = new Date();
+  target.setDate(target.getDate() + 3);
+  target.setHours(23, 59, 59, 0);
+
+  function tick() {
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) { clearInterval(timer); return; }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hrs').textContent  = String(h).padStart(2,'0');
+    document.getElementById('cd-min').textContent  = String(m).padStart(2,'0');
+    document.getElementById('cd-sec').textContent  = String(s).padStart(2,'0');
+  }
+  const timer = setInterval(tick, 1000);
+  tick();
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-in'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.product-card, .plan-card, .badge, .count-block').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
